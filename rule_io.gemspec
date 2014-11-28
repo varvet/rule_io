@@ -1,15 +1,15 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rule_io/version'
+require "rule_io/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rule_io"
   spec.version       = RuleIo::VERSION
   spec.authors       = ["Linus Pettersson"]
   spec.email         = ["linus@varvet.com"]
-  spec.summary       = %q{Ruby API wrapper for Rule.io}
-  spec.description   = %q{Ruby API wrapper for Rule.io}
+  spec.summary       = "Ruby API wrapper for Rule.io"
+  spec.description   = "Ruby API wrapper for Rule.io"
   spec.homepage      = ""
   spec.license       = "MIT"
 
