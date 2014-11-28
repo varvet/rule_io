@@ -5,10 +5,10 @@ module RuleIo
     def self.connection
       @connection ||= Faraday.new(
         url: BASE_URL,
-        proxy: "http://localhost:8888"
+        # proxy: "http://localhost:8888"
       ) do |config|
         config.request :json
-        config.response :json, content_type: /\bjson$/
+        config.response :json
         config.use FaradayMiddleware::RaiseHttpException
         config.adapter Faraday.default_adapter
       end

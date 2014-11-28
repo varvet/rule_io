@@ -13,7 +13,7 @@ module FaradayMiddleware
           fail RuleIo::Conflict, response.body
         when 500
           fail RuleIo::InternalServerError, response.body
-        else
+        when 400..600
           fail RuleIo::Error, response.body
         end
       end
