@@ -10,10 +10,5 @@ module RuleIo
     def test_returns_a_connection
       assert_kind_of Faraday::Connection, RuleIo::Base.connection
     end
-
-    def test_parses_json_response
-      response = RuleIo::Base.connection.get("http://app.rule.io/api/v1/customizations")
-      assert_kind_of Hash, response.body
-    end
   end
 end

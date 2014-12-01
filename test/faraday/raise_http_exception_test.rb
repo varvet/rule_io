@@ -1,5 +1,15 @@
 require "test_helper"
 
+module RuleIo
+  class FooBar < Base
+    def self.all
+      connection.get do |request|
+        request.url "foobar"
+      end
+    end
+  end
+end
+
 module Faraday
   class RaiseHttpExceptionTest < Minitest::Test
     {
@@ -11,9 +21,10 @@ module Faraday
       600 => RuleIo::Error
     }.each do |status, exception|
       define_method "test_http_status_is_#{status}_it_raises_#{exception}" do
-        stub_request(:get, "http://app.rule.io/api/v1/customizations")
+        stub_request(:get, "http://app.rule.io/api/v1/foobar")
           .to_return(status: status)
-        assert_raises(exception) { RuleIo::Customization.all }
+
+        assert_raises(exception) { RuleIo::FooBar.all }
       end
     end
   end
