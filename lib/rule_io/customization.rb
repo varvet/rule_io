@@ -18,7 +18,7 @@ module RuleIo
     attribute :fields, Array[Field]
 
     def self.all
-      response = get("customizations", page: page)
+      response = get("customizations")
       response.body["customizations"].map { |customization| new(customization) }
     end
   end
