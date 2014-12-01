@@ -8,23 +8,23 @@ module RuleIo
     end
 
     def test_all_returns_customizations
-      customizations = RuleIo::Customization.all
+      customizations = Customization.all
       assert_kind_of Array, customizations
-      assert 1, customizations.length
+      assert_equal 1, customizations.length
       assert_kind_of Customization, customizations.first
     end
 
     def test_initialization
-      customizations = RuleIo::Customization.all
+      customizations = Customization.all
       assert_equal 1, customizations.first.id
       assert_equal "Address", customizations.first.name
     end
 
     def test_fields
-      customizations = RuleIo::Customization.all
+      customizations = Customization.all
       assert_kind_of Array, customizations.first.fields
-      assert 1, customizations.first.fields.length
-      assert_kind_of RuleIo::Customization::Field, customizations.first.fields.first
+      assert_equal 3, customizations.first.fields.length
+      assert_kind_of Customization::Field, customizations.first.fields.first
     end
   end
 end
