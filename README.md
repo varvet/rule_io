@@ -1,6 +1,7 @@
 # RuleIo
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/varvet/rule_io.svg?branch=master)](https://travis-ci.org/varvet/rule_io)
+
 
 ## Installation
 
