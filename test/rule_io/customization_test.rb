@@ -11,7 +11,9 @@ module RuleIo
       customizations = Customization.all
       assert_kind_of Array, customizations
       assert_equal 1, customizations.length
-      assert_kind_of Customization, customizations.first
+      customizations.each do |c|
+        assert_kind_of Customization, c
+      end
     end
 
     def test_initialization
