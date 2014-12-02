@@ -1,0 +1,18 @@
+{
+  "subscribers": [
+    {
+      "id": 1,
+      "email": "foobar@example.com",
+      "created_at": "2014-01-01 12:00",
+      "updated_at": "2014-01-02 12:00",
+      "tags": [
+        {
+          "id": 1,
+          "name": "My tag"
+        }
+      ]
+    }
+  ],
+    "number_of_subscribers": 2500,
+    "number_of_pages": 3
+}
