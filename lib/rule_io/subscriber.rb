@@ -15,15 +15,27 @@ module RuleIo
       response.body["subscribers"].map { |subscriber| new(subscriber) }
     end
 
-    def self.find(identitfier, identified_by: nil)
-      response = get("subscribers/#{identitfier}", identified_by: identified_by)
+    def self.find(identifier, identified_by: nil)
+      options = {}
+      options[:identified_by] = identified_by unless identified_by.nil?
+      response = get("subscribers/#{identifier}", options)
       new(response.body["subscriber"])
     end
 
-    def self.create(email, options = {})
-      options[:email] = email
+    def self.create(options = {})
+      fail ArgumentError, "Email is required" unless options[:email]
       response = post("subscribers", options)
       new(response.body["subscriber"])
+    end
+
+    def add_tags(tags)
+      self.class.post("subscribers/#{email}/tags", tags: Array(tags))
+      true
+    end
+
+    def remove_tag(tag)
+      self.class.delete("subscribers/#{email}/tags/#{tag}")
+      true
     end
   end
 end
