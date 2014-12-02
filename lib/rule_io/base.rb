@@ -22,6 +22,14 @@ module RuleIo
           request.params[:apikey] = RuleIo.api_key
         end
       end
+
+      def post(url, params = {})
+        connection.post do |request|
+          request.url url
+          request.body = params
+          request.params[:apikey] = RuleIo.api_key
+        end
+      end
     end
   end
 end

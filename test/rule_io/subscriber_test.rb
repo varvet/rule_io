@@ -5,13 +5,17 @@ module RuleIo
     def setup
       RuleIo.api_key = "secret"
 
-      stub_request(:get, %r{http://app.rule.io/api/v1/subscribers\?apikey=secret})
+      stub_request(:get, "http://app.rule.io/api/v1/subscribers?apikey=secret")
         .to_return(status: 200, body: fixture("subscribers.json"))
 
-      stub_request(:get, %r{http://app.rule.io/api/v1/subscribers/foobar@example.com\?apikey=secret})
+      stub_request(:get, "http://app.rule.io/api/v1/subscribers/foobar@example.com?apikey=secret")
         .to_return(status: 200, body: fixture("subscriber.json"))
 
-      stub_request(:get, %r{http://app.rule.io/api/v1/subscribers/1\?apikey=secret&identified_by=id})
+      stub_request(:get, "http://app.rule.io/api/v1/subscribers/1?apikey=secret&identified_by=id")
+        .to_return(status: 200, body: fixture("subscriber.json"))
+
+      stub_request(:post, "http://app.rule.io/api/v1/subscribers?apikey=secret")
+        .with(body: "{\"tags\":[1,\"Another tag\"],\"fields\":[{\"key\":\"Address\",\"value\":\"FooBar\"}],\"email\":\"foobar@example.com\"}")
         .to_return(status: 200, body: fixture("subscriber.json"))
     end
 
@@ -47,6 +51,13 @@ module RuleIo
 
     def test_find_without_params
       subscriber = Subscriber.find(1, identified_by: "id")
+      assert_equal 1, subscriber.id
+      assert_equal "foobar@example.com", subscriber.email
+    end
+
+    def test_create
+      subscriber = Subscriber.create("foobar@example.com", tags: [1, "Another tag"],
+                                                           fields: [{ key: "Address", value: "FooBar" }])
       assert_equal 1, subscriber.id
       assert_equal "foobar@example.com", subscriber.email
     end

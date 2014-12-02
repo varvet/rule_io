@@ -8,7 +8,9 @@
     "tags": [
       {
         "id": 1,
-        "name": "My tag"
+        "name": "My tag",
+        "id": 2,
+        "name": "Another tag"
       }
     ]
   }

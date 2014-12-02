@@ -15,8 +15,14 @@ module RuleIo
       response.body["subscribers"].map { |subscriber| new(subscriber) }
     end
 
-    def self.find(identitfier, options = {})
-      response = get("subscribers/#{identitfier}", options)
+    def self.find(identitfier, identified_by: nil)
+      response = get("subscribers/#{identitfier}", identified_by: identified_by)
+      new(response.body["subscriber"])
+    end
+
+    def self.create(email, options = {})
+      options[:email] = email
+      response = post("subscribers", options)
       new(response.body["subscriber"])
     end
   end
