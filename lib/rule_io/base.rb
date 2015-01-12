@@ -1,11 +1,9 @@
 module RuleIo
   class Base
-    BASE_URL = "http://app.rule.io/api/v1"
-
     class << self
       def connection
         @connection ||= Faraday.new(
-          url: BASE_URL,
+          url: RuleIo.base_url,
           # proxy: "http://localhost:8888"
         ) do |config|
           config.request :json
@@ -26,8 +24,7 @@ module RuleIo
       def post(url, params = {})
         connection.post do |request|
           request.url url
-          request.body = params
-          request.params[:apikey] = RuleIo.api_key
+          request.body = { apikey: RuleIo.api_key }.merge(params)
         end
       end
 

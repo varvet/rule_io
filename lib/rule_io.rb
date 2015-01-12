@@ -6,6 +6,7 @@ require "rule_io/base"
 require "rule_io/customization"
 require "rule_io/subscriber"
 require "rule_io/suppression"
+require "rule_io/transactional"
 require "rule_io/tag"
 require "rule_io/error"
 require "rule_io/version"
@@ -13,6 +14,7 @@ require "byebug"
 
 module RuleIo
   @@api_key = nil
+  @@base_url = "http://app.rule.io/api/v1"
 
   def self.api_key
     @@api_key
@@ -20,5 +22,13 @@ module RuleIo
 
   def self.api_key=(value)
     @@api_key = value
+  end
+
+  def self.base_url
+    @@base_url
+  end
+
+  def self.base_url=(value)
+    @@base_url = value
   end
 end
