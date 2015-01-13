@@ -14,12 +14,12 @@ module RuleIo
       stub_request(:get, "http://app.rule.io/api/v1/subscribers/1?apikey=secret&identified_by=id")
         .to_return(status: 200, body: fixture("subscriber.json"))
 
-      stub_request(:post, "http://app.rule.io/api/v1/subscribers?apikey=secret")
-        .with(body: "{\"email\":\"foobar@example.com\",\"tags\":[1,\"Another tag\"],\"fields\":[{\"key\":\"Address\",\"value\":\"FooBar\"}]}")
+      stub_request(:post, "http://app.rule.io/api/v1/subscribers")
+        .with(body: { apikey: "secret", email: "foobar@example.com", tags: [1, "Another tag"], fields: [{ key: "Address", value: "FooBar" }] })
         .to_return(status: 200, body: fixture("subscriber.json"))
 
-      stub_request(:post, "http://app.rule.io/api/v1/subscribers/foobar@example.com/tags?apikey=secret")
-        .with(body: "{\"tags\":[\"FooBar\"]}")
+      stub_request(:post, "http://app.rule.io/api/v1/subscribers/foobar@example.com/tags")
+        .with(body: { apikey: "secret", tags: ["FooBar"] })
         .to_return(status: 200, body: "{\"message\": \"Success\"}")
 
       stub_request(:delete, "http://app.rule.io/api/v1/subscribers/foobar@example.com/tags/FooBar?apikey=secret")

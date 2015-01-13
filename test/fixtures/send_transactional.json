@@ -1,0 +1,26 @@
+{
+  "apikey": "secret",
+  "transaction_type": "email",
+  "transaction_name": "Lorem",
+  "template_id": 253,
+  "subject": "Lorem Ipsum",
+  "from": {
+    "name": "FooBar",
+    "email": "foo@example.com"
+  },
+  "to": [
+    {"email": "foobar@example.com"}
+  ],
+  "content": [
+    {
+      "block_id": "one_column",
+      "block_content": [
+        {
+          "title": "Title",
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "image": "http://example.com/foo.jpg"
+        }
+      ]
+    }
+  ]
+}
