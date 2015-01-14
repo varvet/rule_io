@@ -1,0 +1,12 @@
+{
+  "templates": [
+    {
+      "id": 1,
+      "name": "Foo Bar"
+    },
+    {
+      "id": 2,
+      "name": "Bar Baz"
+    }
+  ]
+}

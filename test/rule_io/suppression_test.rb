@@ -3,7 +3,7 @@ require "test_helper"
 module RuleIo
   class SuppressionTest < Minitest::Test
     def setup
-      stub_request(:get, %r{http://app.rule.io/api/v1/suppressions\?apikey=*})
+      stub_request(:get, %r{#{RuleIo.base_url}/suppressions\?apikey=*})
         .to_return(status: 200, body: fixture("suppressions.json"))
     end
 

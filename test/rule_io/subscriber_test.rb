@@ -5,24 +5,24 @@ module RuleIo
     def setup
       RuleIo.api_key = "secret"
 
-      stub_request(:get, "http://app.rule.io/api/v1/subscribers?apikey=secret")
+      stub_request(:get, "#{RuleIo.base_url}/subscribers?apikey=secret")
         .to_return(status: 200, body: fixture("subscribers.json"))
 
-      stub_request(:get, "http://app.rule.io/api/v1/subscribers/foobar@example.com?apikey=secret")
+      stub_request(:get, "#{RuleIo.base_url}/subscribers/foobar@example.com?apikey=secret")
         .to_return(status: 200, body: fixture("subscriber.json"))
 
-      stub_request(:get, "http://app.rule.io/api/v1/subscribers/1?apikey=secret&identified_by=id")
+      stub_request(:get, "#{RuleIo.base_url}/subscribers/1?apikey=secret&identified_by=id")
         .to_return(status: 200, body: fixture("subscriber.json"))
 
-      stub_request(:post, "http://app.rule.io/api/v1/subscribers")
+      stub_request(:post, "#{RuleIo.base_url}/subscribers")
         .with(body: { apikey: "secret", email: "foobar@example.com", tags: [1, "Another tag"], fields: [{ key: "Address", value: "FooBar" }] })
         .to_return(status: 200, body: fixture("subscriber.json"))
 
-      stub_request(:post, "http://app.rule.io/api/v1/subscribers/foobar@example.com/tags")
+      stub_request(:post, "#{RuleIo.base_url}/subscribers/foobar@example.com/tags")
         .with(body: { apikey: "secret", tags: ["FooBar"] })
         .to_return(status: 200, body: "{\"message\": \"Success\"}")
 
-      stub_request(:delete, "http://app.rule.io/api/v1/subscribers/foobar@example.com/tags/FooBar?apikey=secret")
+      stub_request(:delete, "#{RuleIo.base_url}/subscribers/foobar@example.com/tags/FooBar?apikey=secret")
         .to_return(status: 200, body: "{\"message\": \"Success\"}")
     end
 

@@ -21,7 +21,7 @@ module Faraday
       600 => RuleIo::Error
     }.each do |status, exception|
       define_method "test_http_status_is_#{status}_it_raises_#{exception}" do
-        stub_request(:get, "http://app.rule.io/api/v1/foobar")
+        stub_request(:get, "#{RuleIo.base_url}/foobar")
           .to_return(status: status)
 
         assert_raises(exception) { RuleIo::FooBar.all }

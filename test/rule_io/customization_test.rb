@@ -3,7 +3,7 @@ require "test_helper"
 module RuleIo
   class CustomizationTest < Minitest::Test
     def setup
-      stub_request(:get, %r{http://app.rule.io/api/v1/customizations\?apikey=*})
+      stub_request(:get, /#{RuleIo.base_url}\/customizations\?apikey=*/)
         .to_return(status: 200, body: fixture("customizations.json"))
     end
 

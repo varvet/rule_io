@@ -5,7 +5,7 @@ module RuleIo
     def setup
       RuleIo.api_key = "secret"
 
-      stub_request(:post, "http://app.rule.io/api/v1/transactionals")
+      stub_request(:post, "#{RuleIo.base_url}/transactionals")
         .with(body: JSON.parse(fixture("send_transactional.json")))
         .to_return(status: 200, body: { transaction_id: 123_456 }.to_json)
     end

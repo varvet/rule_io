@@ -3,7 +3,7 @@ require "test_helper"
 module RuleIo
   class TagTest < Minitest::Test
     def setup
-      stub_request(:get, %r{http://app.rule.io/api/v1/tags\?apikey=*})
+      stub_request(:get, /#{RuleIo.base_url}\/tags\?apikey=*/)
         .to_return(status: 200, body: fixture("tags.json"))
     end
 
