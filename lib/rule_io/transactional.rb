@@ -4,7 +4,7 @@ module RuleIo
 
     attribute :transaction_type, String,  default: "email"
     attribute :transaction_name, String,  default: ""
-    attribute :template_id,      Integer, default: 253
+    attribute :template_id,      Integer, default: 0
     attribute :subject,          String,  default: ""
     attribute :from,             Hash
     attribute :to,               Set[Hash]

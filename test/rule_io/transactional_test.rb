@@ -28,6 +28,7 @@ module RuleIo
       transactional = Transactional.new(from: { name: "FooBar", email: "foo@example.com" },
                                         to: [{ email: "foobar@example.com" }],
                                         transaction_name: "Lorem",
+                                        template_id: 1,
                                         subject: "Lorem Ipsum",
                                         content: [
                                           {

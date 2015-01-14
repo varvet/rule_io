@@ -2,7 +2,7 @@
   "apikey": "secret",
   "transaction_type": "email",
   "transaction_name": "Lorem",
-  "template_id": 253,
+  "template_id": 1,
   "subject": "Lorem Ipsum",
   "from": {
     "name": "FooBar",
