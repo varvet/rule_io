@@ -11,7 +11,6 @@ require "rule_io/transactional"
 require "rule_io/tag"
 require "rule_io/error"
 require "rule_io/version"
-require "byebug"
 
 module RuleIo
   @@api_key = nil
