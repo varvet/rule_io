@@ -11,6 +11,8 @@ require "rule_io/transactional"
 require "rule_io/tag"
 require "rule_io/error"
 require "rule_io/version"
+require "rule_io/delivery_method"
+require "rule_io/railtie"
 
 module RuleIo
   @@api_key = nil
