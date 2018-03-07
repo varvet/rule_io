@@ -4,18 +4,14 @@ module RuleIo
   class DeliveryMethod < Base
     attr_reader :mailer
 
-    def initialize(_); end
+    def initialize(___)
+    end
 
     def settings
       { return_response: false }
     end
 
-    def deliver_later
-      binding.pry
-    end
-
     def deliver!(mail)
-      binding.pry
       response = self.class.post("transactionals", mail_content(mail))
       response.body["transaction_id"]
     end
@@ -50,6 +46,6 @@ module RuleIo
       }
     end
 
-    alias deliver_now deliver!
+    alias_method :deliver_now, :deliver!
   end
 end
