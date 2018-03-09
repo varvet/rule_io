@@ -23,7 +23,7 @@ module RuleIo
     end
 
     def self.create(options = {})
-      fail ArgumentError, "Email is required" unless options[:email]
+      raise ArgumentError, "Email is required" unless options[:email]
       response = post("subscribers", options)
       new(response.body["subscriber"])
     end
