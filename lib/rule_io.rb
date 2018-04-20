@@ -11,8 +11,6 @@ require "rule_io/transactional"
 require "rule_io/tag"
 require "rule_io/error"
 require "rule_io/version"
-require "rule_io/delivery_method"
-require "rule_io/railtie" if defined? Rails
 
 module RuleIo
   @@api_key = nil
